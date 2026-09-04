@@ -1,0 +1,7 @@
+title: MyJournal
+description: A voice-first personal journal for Android. Private by default.
+theme: jekyll-theme-primer
+# The site exists to serve the documents Google Play requires at a public URL; there is no
+# analytics, no tracking and nothing collected here, which is also what the privacy policy says.
+exclude:
+  - README.md

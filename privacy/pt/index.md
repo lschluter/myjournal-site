@@ -8,7 +8,7 @@ title: Política de Privacidade
 - **Data de vigência:** 4 de setembro de 2026
 - **Aplica-se a:** MyJournal para Android (`br.com.schluter.myjournal`)
 - **Desenvolvedor:** Leonardo Schluter Leite
-- **Contato de privacidade:** leonardoschluter@gmail.com
+- **Contato de privacidade:** lschluterleite@gmail.com
 - **Versão do aviso no app:** 2 (veja [Mudanças nesta política](#mudancas-nesta-politica))
 - **Also available in:** [English](https://lschluter.github.io/myjournal-site/privacy/)
 
@@ -165,7 +165,7 @@ em execução. Nenhuma criptografia no nível do app impede isso.
 
 Para relatar um problema de segurança, veja a
 [página de suporte](https://lschluter.github.io/myjournal-site/support/) ou escreva para
-leonardoschluter@gmail.com.
+lschluterleite@gmail.com.
 
 ## Mudanças nesta política {#mudancas-nesta-politica}
 
@@ -183,4 +183,4 @@ Esta página sempre mostra a versão atual.
 
 ## Contato
 
-Leonardo Schluter Leite — leonardoschluter@gmail.com
+Leonardo Schluter Leite — lschluterleite@gmail.com

@@ -20,4 +20,4 @@ MyJournal is currently in **internal testing**; it is not yet publicly available
 
 ---
 
-Developed by Leonardo Schluter Leite — leonardoschluter@gmail.com
+Developed by Leonardo Schluter Leite — lschluterleite@gmail.com

@@ -9,7 +9,7 @@ permalink: /support/
 MyJournal is built and maintained by one person. There is no support desk and no ticket system —
 email is the whole channel, and it reaches the developer directly.
 
-**leonardoschluter@gmail.com**
+**lschluterleite@gmail.com**
 
 ## Reporting a bug
 
@@ -25,7 +25,7 @@ specific entry is involved, say "an entry containing an accented character" rath
 
 ## Reporting a security problem
 
-Security reports go to the same address: **leonardoschluter@gmail.com**. Please include enough
+Security reports go to the same address: **lschluterleite@gmail.com**. Please include enough
 detail to reproduce the issue, and give a reasonable window for a fix before disclosing it publicly.
 
 In scope: anything that lets someone read journal data they should not be able to, defeats the

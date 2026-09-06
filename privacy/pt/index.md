@@ -79,7 +79,9 @@ modelo de IA (por padrão `google/gemini-2.5-flash-lite`). Você escolhe o model
   Quantas é uma configuração sua, e o padrão é 20. **Nunca são enviadas mais de 20 entradas,
   qualquer que seja o número mostrado na configuração** — o limite de transmissão é aplicado no
   código independentemente da configuração, então um número maior digitado nas Configurações não
-  faz o app enviar mais.
+  faz o app enviar mais. O seu idioma de exibição também é enviado (por exemplo
+  `Portuguese (Brazil) (pt-BR)`), para que a resposta volte no idioma em que você lê o app — é a
+  própria configuração de idioma, não um identificador do dispositivo.
 - *Extração de TODOs*: o texto completo da entrada que você acabou de salvar, mais o texto das suas
   TODOs abertas no momento, para que o modelo consiga dizer quais foram concluídas.
 
@@ -107,8 +109,19 @@ não alcança.
 ## O que o desenvolvedor recebe
 
 Nada. Não há servidor, não há conta, não há SDK de analytics, não há SDK de relatório de falhas e
-não há publicidade. O app faz requisições de rede para exatamente um terceiro, o OpenRouter, e
-somente sob o consentimento descrito acima.
+não há publicidade. O desenvolvedor nunca vê suas requisições e não opera nada no caminho delas.
+
+**Os dados do diário vão para exatamente um terceiro, o OpenRouter, e somente sob o consentimento
+descrito acima.** Para ser completo, o app faz outros três tipos de requisição de rede. Nenhum
+deles carrega conteúdo do diário:
+
+- **Conectar sua conta do OpenRouter** — um login no navegador e a troca de chave que vem depois.
+- **Carregar a lista de modelos de IA selecionáveis**, quando você abre o seletor de modelos nas
+  Configurações. Isso não envia chave de API nem dados do diário, e é por isso que pode acontecer
+  antes de você conceder o consentimento de nuvem — mas só ocorre quando você abre esse seletor,
+  nunca na inicialização do app.
+- **Áudio de fala para o serviço de fala do Google** — apenas se você ativar a opção *reconhecimento
+  remoto* descrita em [Microfone e fala](#microfone-e-fala), que vem desligada por padrão.
 
 Se o app for distribuído pelo Google Play, o Google coleta suas próprias estatísticas de instalação
 e de falhas, sob a [política de privacidade do Google](https://policies.google.com/privacy). Essa

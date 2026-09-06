@@ -77,7 +77,9 @@ provider (by default `google/gemini-2.5-flash-lite`). You choose the model in Se
 - *Ask*: your question, plus your most recent journal entries, in full, as context. How many is a
   setting you control, and it defaults to 20. **No more than 20 entries are ever sent, whatever
   the setting shows** — the transmission cap is enforced in the code independently of the setting,
-  so a larger number entered in Settings does not send more.
+  so a larger number entered in Settings does not send more. Your display language is also sent
+  (for example `Portuguese (Brazil) (pt-BR)`), so the answer comes back in the language you read
+  the app in — that is the language setting itself, not a device identifier.
 - *TODO extraction*: the full text of the entry you just saved, plus the text of your currently
   open TODOs, so the model can tell which are newly completed.
 
@@ -105,8 +107,19 @@ does not reach.
 ## What the developer receives
 
 Nothing. There is no server, no account, no analytics SDK, no crash-reporting SDK, and no
-advertising. The app makes network requests to exactly one third party, OpenRouter, and only
-under the consent described above.
+advertising. The developer never sees your requests and operates nothing in their path.
+
+**Journal data goes to exactly one third party, OpenRouter, and only under the consent described
+above.** For completeness, the app makes three other kinds of network request. None of them
+carries journal content:
+
+- **Connecting your OpenRouter account** — a browser sign-in and the key exchange that follows.
+- **Loading the list of selectable AI models**, when you open the model picker in Settings. This
+  sends no API key and no journal data, which is why it is allowed to run before you grant cloud
+  consent — but it happens only when you open that picker, never on app start.
+- **Speech audio to Google's speech service** — only if you turn on the optional *remote
+  recognition* setting described under [Microphone and speech](#microphone-and-speech), which is
+  off by default.
 
 If the app is distributed through Google Play, Google collects its own installation and
 crash statistics under [Google's privacy policy](https://policies.google.com/privacy). That is

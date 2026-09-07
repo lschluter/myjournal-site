@@ -38,8 +38,8 @@ Tudo abaixo é armazenado apenas no armazenamento privado do app, no seu disposi
 
 O banco de dados do diário é criptografado com SQLCipher (AES-256). A chave de criptografia é
 gerada aleatoriamente no seu dispositivo, protegida pelo Android Keystore, e nunca sai do
-dispositivo. Sua chave de API e o registro de consentimento ficam em preferências criptografadas
-apoiadas no mesmo Keystore.
+dispositivo. Sua chave de API e o registro de consentimento são criptografados no seu dispositivo
+com chaves mantidas no mesmo Keystore.
 
 O backup automático em nuvem do Android e a transferência entre dispositivos estão **desativados**
 (`allowBackup="false"`), então seu diário não é copiado para a sua conta Google.

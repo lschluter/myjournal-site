@@ -39,7 +39,7 @@ Everything below is stored only in the app's private storage on your device.
 
 The journal database is encrypted with SQLCipher (AES-256). The encryption key is randomly
 generated on your device, wrapped by the Android Keystore, and never leaves the device. Your
-API key and consent record are held in encrypted preferences backed by the same Keystore.
+API key and consent record are encrypted on your device with keys held in the same Keystore.
 
 Android's automatic cloud backup and device-to-device transfer are **disabled**
 (`allowBackup="false"`), so your journal is not copied into your Google account.

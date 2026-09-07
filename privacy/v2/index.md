@@ -56,8 +56,10 @@ The app requests the **microphone** permission to transcribe what you say into t
 - If on-device recognition is unavailable on your device, the app **tells you and stops**. It
   does not quietly fall back to a network recogniser.
 - There is one exception, and it is opt-in: a setting called **remote recognition**, off by
-  default. If you turn it on, speech is sent to Google's speech service under Google's own
-  privacy policy. Leave it off if you do not want that.
+  default. If you turn it on, speech is sent to whichever speech-recognition service your device is
+  set up to use, under that provider's own privacy policy. On most Android phones that is Google's,
+  but the app asks the system for the configured recogniser rather than naming one, so on some
+  devices it may be the manufacturer's. Leave it off if you do not want that.
 
 You can use the entire app by typing, without ever granting microphone access.
 
@@ -74,10 +76,12 @@ provider (by default `google/gemini-2.5-flash-lite`). You choose the model in Se
 
 **What is sent:**
 
-- *Ask*: your question, plus your most recent journal entries, in full, as context. How many is a
-  setting you control, and it defaults to 20. **No more than 20 entries are ever sent, whatever
-  the setting shows** — the transmission cap is enforced in the code independently of the setting,
-  so a larger number entered in Settings does not send more. Your display language is also sent
+- *Ask*: your question, plus a small number of journal entries as context — **by default only the
+  entries that match your question**, in full, not your journal in general. A separate setting,
+  *broad answers*, is what makes the app send your most recent entries instead, whether or not they
+  match; it is off unless you turn it on. Either way **no more than 20 entries are ever sent**, and
+  that cap is enforced in the code independently of the number shown in Settings, so a larger
+  number entered there does not send more. Your display language is also sent
   (for example `Portuguese (Brazil) (pt-BR)`), so the answer comes back in the language you read
   the app in — that is the language setting itself, not a device identifier.
 - *TODO extraction*: the full text of the entry you just saved, plus the text of your currently
@@ -109,17 +113,21 @@ does not reach.
 Nothing. There is no server, no account, no analytics SDK, no crash-reporting SDK, and no
 advertising. The developer never sees your requests and operates nothing in their path.
 
-**Journal data goes to exactly one third party, OpenRouter, and only under the consent described
-above.** For completeness, the app makes three other kinds of network request. None of them
-carries journal content:
+**The app sends journal data to exactly one company, OpenRouter, and only under the consent
+described above.** OpenRouter is a router: it forwards your question and the entries to whichever
+model provider serves the model you picked in Settings, so that provider processes them too. The
+app never contacts that provider directly, and it is the only party downstream of OpenRouter.
+
+For completeness, the app makes three other kinds of network request. None of them carries journal
+content:
 
 - **Connecting your OpenRouter account** — a browser sign-in and the key exchange that follows.
 - **Loading the list of selectable AI models**, when you open the model picker in Settings. This
   sends no API key and no journal data, which is why it is allowed to run before you grant cloud
   consent — but it happens only when you open that picker, never on app start.
-- **Speech audio to Google's speech service** — only if you turn on the optional *remote
-  recognition* setting described under [Microphone and speech](#microphone-and-speech), which is
-  off by default.
+- **Speech audio to your device's speech-recognition service** — only if you turn on the optional
+  *remote recognition* setting described under [Microphone and speech](#microphone-and-speech),
+  which is off by default.
 
 If the app is distributed through Google Play, Google collects its own installation and
 crash statistics under [Google's privacy policy](https://policies.google.com/privacy). That is

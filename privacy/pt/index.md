@@ -56,8 +56,11 @@ O app pede a permissão de **microfone** para transcrever em texto o que você f
 - Se o reconhecimento on-device não estiver disponível no seu aparelho, o app **avisa você e
   para**. Ele não recorre silenciosamente a um reconhecedor pela rede.
 - Existe uma exceção, e ela é opcional: uma configuração chamada **reconhecimento remoto**,
-  desativada por padrão. Se você ativá-la, a fala é enviada ao serviço de reconhecimento do Google,
-  sob a política de privacidade do próprio Google. Deixe-a desativada se não quiser isso.
+  desativada por padrão. Se você ativá-la, a fala é enviada ao serviço de reconhecimento de fala
+  que o seu aparelho estiver configurado para usar, sob a política de privacidade daquele provedor.
+  Na maioria dos aparelhos Android esse serviço é o do Google, mas o app pede ao sistema o
+  reconhecedor configurado em vez de escolher um, então em alguns aparelhos pode ser o do
+  fabricante. Deixe-a desativada se não quiser isso.
 
 Você pode usar o app inteiro digitando, sem nunca conceder acesso ao microfone.
 
@@ -75,11 +78,13 @@ modelo de IA (por padrão `google/gemini-2.5-flash-lite`). Você escolhe o model
 
 **O que é enviado:**
 
-- *Ask*: sua pergunta, mais suas entradas mais recentes do diário, na íntegra, como contexto.
-  Quantas é uma configuração sua, e o padrão é 20. **Nunca são enviadas mais de 20 entradas,
-  qualquer que seja o número mostrado na configuração** — o limite de transmissão é aplicado no
-  código independentemente da configuração, então um número maior digitado nas Configurações não
-  faz o app enviar mais. O seu idioma de exibição também é enviado (por exemplo
+- *Ask*: sua pergunta, mais um pequeno número de entradas do diário como contexto — **por padrão
+  apenas as entradas que correspondem à sua pergunta**, na íntegra, e não o seu diário em geral.
+  Uma configuração separada, *respostas amplas*, é o que faz o app enviar as suas entradas mais
+  recentes em vez disso, correspondam elas ou não; ela fica desativada a menos que você a ative.
+  De um jeito ou de outro, **nunca são enviadas mais de 20 entradas**, e esse limite é aplicado no
+  código independentemente do número mostrado nas Configurações, então um número maior digitado lá
+  não faz o app enviar mais. O seu idioma de exibição também é enviado (por exemplo
   `Portuguese (Brazil) (pt-BR)`), para que a resposta volte no idioma em que você lê o app — é a
   própria configuração de idioma, não um identificador do dispositivo.
 - *Extração de TODOs*: o texto completo da entrada que você acabou de salvar, mais o texto das suas
@@ -111,17 +116,23 @@ não alcança.
 Nada. Não há servidor, não há conta, não há SDK de analytics, não há SDK de relatório de falhas e
 não há publicidade. O desenvolvedor nunca vê suas requisições e não opera nada no caminho delas.
 
-**Os dados do diário vão para exatamente um terceiro, o OpenRouter, e somente sob o consentimento
-descrito acima.** Para ser completo, o app faz outros três tipos de requisição de rede. Nenhum
-deles carrega conteúdo do diário:
+**O app envia dados do diário para exatamente uma empresa, o OpenRouter, e somente sob o
+consentimento descrito acima.** O OpenRouter é um roteador: ele encaminha a sua pergunta e as
+entradas para o provedor do modelo que você escolheu nas Configurações, de modo que esse provedor
+também os processa. O app nunca contata esse provedor diretamente, e ele é a única parte a jusante
+do OpenRouter.
+
+Para ser completo, o app faz outros três tipos de requisição de rede. Nenhum deles carrega conteúdo
+do diário:
 
 - **Conectar sua conta do OpenRouter** — um login no navegador e a troca de chave que vem depois.
 - **Carregar a lista de modelos de IA selecionáveis**, quando você abre o seletor de modelos nas
   Configurações. Isso não envia chave de API nem dados do diário, e é por isso que pode acontecer
   antes de você conceder o consentimento de nuvem — mas só ocorre quando você abre esse seletor,
   nunca na inicialização do app.
-- **Áudio de fala para o serviço de fala do Google** — apenas se você ativar a opção *reconhecimento
-  remoto* descrita em [Microfone e fala](#microfone-e-fala), que vem desligada por padrão.
+- **Áudio de fala para o serviço de reconhecimento do seu aparelho** — apenas se você ativar a
+  opção *reconhecimento remoto* descrita em [Microfone e fala](#microfone-e-fala), que vem
+  desligada por padrão.
 
 Se o app for distribuído pelo Google Play, o Google coleta suas próprias estatísticas de instalação
 e de falhas, sob a [política de privacidade do Google](https://policies.google.com/privacy). Essa

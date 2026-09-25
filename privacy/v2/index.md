@@ -78,10 +78,11 @@ provider (by default `google/gemini-2.5-flash-lite`). You choose the model in Se
 
 - *Ask*: your question, plus a small number of journal entries as context — **by default only the
   entries that match your question**, in full, not your journal in general. A separate setting,
-  *broad answers*, is what makes the app send your most recent entries instead, whether or not they
-  match; it is off unless you turn it on. Either way **no more than 20 entries are ever sent**, and
-  that cap is enforced in the code independently of the number shown in Settings, so a larger
-  number entered there does not send more. Your display language is also sent
+  *broad answers*, widens that to a period of time you choose (7 days up to a year), so entries from
+  that period can be sent whether or not they match; it is off unless you turn it on. Either way
+  **no more than 20 entries are ever sent**, and that cap is enforced in the code independently of
+  the setting, so choosing a longer period does not send more — it changes which entries are
+  eligible, and the ones matching your question are chosen first. Your display language is also sent
   (for example `Portuguese (Brazil) (pt-BR)`), so the answer comes back in the language you read
   the app in — that is the language setting itself, not a device identifier.
 - *TODO extraction*: the full text of the entry you just saved, plus the text of your currently

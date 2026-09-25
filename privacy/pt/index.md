@@ -80,11 +80,13 @@ modelo de IA (por padrão `google/gemini-2.5-flash-lite`). Você escolhe o model
 
 - *Ask*: sua pergunta, mais um pequeno número de entradas do diário como contexto — **por padrão
   apenas as entradas que correspondem à sua pergunta**, na íntegra, e não o seu diário em geral.
-  Uma configuração separada, *respostas amplas*, é o que faz o app enviar as suas entradas mais
-  recentes em vez disso, correspondam elas ou não; ela fica desativada a menos que você a ative.
-  De um jeito ou de outro, **nunca são enviadas mais de 20 entradas**, e esse limite é aplicado no
-  código independentemente do número mostrado nas Configurações, então um número maior digitado lá
-  não faz o app enviar mais. O seu idioma de exibição também é enviado (por exemplo
+  Uma configuração separada, *respostas amplas*, amplia isso para um período de tempo que você
+  escolhe (de 7 dias até um ano), de modo que entradas desse período podem ser enviadas
+  correspondam elas ou não; ela fica desativada a menos que você a ative. De um jeito ou de outro,
+  **nunca são enviadas mais de 20 entradas**, e esse limite é aplicado no código independentemente
+  da configuração, então escolher um período mais longo não faz o app enviar mais — muda quais
+  entradas são elegíveis, e as que correspondem à sua pergunta são escolhidas primeiro. O seu
+  idioma de exibição também é enviado (por exemplo
   `Portuguese (Brazil) (pt-BR)`), para que a resposta volte no idioma em que você lê o app — é a
   própria configuração de idioma, não um identificador do dispositivo.
 - *Extração de TODOs*: o texto completo da entrada que você acabou de salvar, mais o texto das suas

@@ -80,7 +80,8 @@ modelo de IA (por padrão `google/gemini-2.5-flash-lite`). Você escolhe o model
 **O que é enviado:**
 
 - *Ask*: sua pergunta, mais um pequeno número de entradas do diário como contexto — **por padrão
-  apenas as entradas que correspondem à sua pergunta**, na íntegra, e não o seu diário em geral.
+  apenas as entradas que correspondem à sua pergunta**, e não o seu diário em geral. Cada entrada
+  é enviada com a data e a hora em que foi escrita, e o seu texto até 4.000 caracteres.
   Uma configuração separada, *respostas amplas*, amplia isso para um período de tempo que você
   escolhe (de 7 dias até um ano), de modo que entradas desse período podem ser enviadas
   correspondam elas ou não; ela fica desativada a menos que você a ative. De um jeito ou de outro,
@@ -90,8 +91,11 @@ modelo de IA (por padrão `google/gemini-2.5-flash-lite`). Você escolhe o model
   idioma de exibição também é enviado (por exemplo
   `Portuguese (Brazil) (pt-BR)`), para que a resposta volte no idioma em que você lê o app — é a
   própria configuração de idioma, não um identificador do dispositivo.
-- *Extração de TODOs*: o texto completo da entrada que você acabou de salvar, mais o texto das suas
-  TODOs abertas no momento, para que o modelo consiga dizer quais foram concluídas.
+- *Extração de TODOs*: o texto da entrada que você acabou de salvar (até 4.000 caracteres), mais
+  até 100 das suas TODOs abertas no momento, para que o modelo consiga dizer quais foram
+  concluídas. Cada TODO é enviada com o seu texto (até 500 caracteres) e o identificador interno
+  que o app deu a ela, ao qual a resposta se refere; os identificadores são gerados pelo app e não
+  contêm nenhuma das suas palavras.
 
 **O que não é enviado:** áudio, seu nome, seu e-mail, identificadores do dispositivo, localização,
 contatos ou qualquer ID de publicidade. O app não coleta nada disso, para começar.
@@ -157,7 +161,8 @@ faz diretamente, no app, a qualquer momento:
 - **Excluir** qualquer entrada ou TODO individual, com uma breve janela para desfazer.
 - **Excluir todas** as entradas do diário, ou todas as TODOs.
 - **Apagar todos os dados do app** — remove entradas, TODOs, sua chave de API, seu registro de
-  consentimento e seu total gasto com IA, e redefine as configurações de segurança.
+  consentimento e seu total gasto com IA, e devolve todas as configurações ao estado de uma
+  instalação nova.
 - **Exportar** seu diário, como arquivo de backup criptografado (AES-256-GCM, protegido por uma
   senha escolhida por você) ou como Markdown puro.
 - **Importar** um backup criptografado para restaurar.

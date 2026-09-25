@@ -35,6 +35,7 @@ Tudo abaixo é armazenado apenas no armazenamento privado do app, no seu disposi
 | Sua chave de API do OpenRouter | Autenticar suas próprias requisições de IA | Até você excluí-la ou apagar os dados do app |
 | Configurações (tema, idioma, bloqueio do app, modelo escolhido) | Preferências | Até você apagar os dados do app |
 | Seu registro de consentimento de nuvem | Comprovar que o consentimento foi concedido, e para qual versão deste aviso | Até você apagar os dados do app |
+| Total gasto com IA: o valor que o OpenRouter informou ter cobrado pelas perguntas e pela extração de TODOs, o modelo a que se refere, e a data em que a contagem começou | Mostrar quanto os recursos de IA custaram | Até você zerá-lo, escolher outro modelo ou apagar os dados do app |
 
 O banco de dados do diário é criptografado com SQLCipher (AES-256). A chave de criptografia é
 gerada aleatoriamente no seu dispositivo, protegida pelo Android Keystore, e nunca sai do
@@ -97,7 +98,10 @@ contatos ou qualquer ID de publicidade. O app não coleta nada disso, para come�
 
 **Cobrança e contas:** você conecta a sua própria conta do OpenRouter por um login no navegador. A
 chave emitida pertence a você e o uso é cobrado de você. O desenvolvedor nunca vê a chave, nunca vê
-suas requisições, e não opera nenhum servidor no caminho.
+suas requisições, e não opera nenhum servidor no caminho. Cada requisição pede ao OpenRouter que
+informe quanto custou, e o app soma esses valores no seu aparelho para que as Configurações mostrem
+quanto o modelo escolhido já custou; esse total nunca é enviado a lugar nenhum. Só os valores são
+guardados — não a contagem de tokens, nem uma lista das requisições.
 
 **Controles de privacidade enviados em toda requisição:** cada requisição declara retenção zero de
 dados (`zdr`), recusa provedores que coletam dados para treinamento (`data_collection: "deny"`) e
@@ -153,7 +157,7 @@ faz diretamente, no app, a qualquer momento:
 - **Excluir** qualquer entrada ou TODO individual, com uma breve janela para desfazer.
 - **Excluir todas** as entradas do diário, ou todas as TODOs.
 - **Apagar todos os dados do app** — remove entradas, TODOs, sua chave de API, seu registro de
-  consentimento, e redefine as configurações de segurança.
+  consentimento e seu total gasto com IA, e redefine as configurações de segurança.
 - **Exportar** seu diário, como arquivo de backup criptografado (AES-256-GCM, protegido por uma
   senha escolhida por você) ou como Markdown puro.
 - **Importar** um backup criptografado para restaurar.

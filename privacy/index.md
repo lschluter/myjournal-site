@@ -36,6 +36,7 @@ Everything below is stored only in the app's private storage on your device.
 | Your OpenRouter API key | Authenticating your own AI requests | Until you delete it or erase app data |
 | Settings (theme, language, app lock, model choice) | Preferences | Until you erase app data |
 | Your cloud-consent record | Proving consent was granted, and for which version of this disclosure | Until you erase app data |
+| AI spending total: the amount OpenRouter reported charging for Ask and for TODO extraction, the model it applies to, and the date counting started | Showing you what the AI features have cost | Until you reset it, pick a different model, or erase app data |
 
 The journal database is encrypted with SQLCipher (AES-256). The encryption key is randomly
 generated on your device, wrapped by the Android Keystore, and never leaves the device. Your
@@ -93,7 +94,10 @@ any advertising ID. The app collects none of these in the first place.
 
 **Billing and accounts:** you connect your own OpenRouter account through a browser sign-in.
 The key issued belongs to you and usage bills to you. The developer never sees the key, never
-sees your requests, and operates no server in the path.
+sees your requests, and operates no server in the path. Each request asks OpenRouter to report
+what it cost, and the app adds that up on your device so Settings can show what the selected model
+has cost you; the total is never sent anywhere. Only the amounts are kept — not token counts, and
+not a list of individual requests.
 
 **Privacy controls sent with every request:** each request asserts zero data retention
 (`zdr`), refuses providers that collect data for training (`data_collection: "deny"`), and
@@ -146,8 +150,8 @@ something you do directly, in the app, at any time:
 
 - **Delete** any single entry or TODO, with a brief undo window.
 - **Delete all** journal entries, or all TODOs.
-- **Erase all app data** — removes entries, TODOs, your API key, your consent record, and
-  resets security settings.
+- **Erase all app data** — removes entries, TODOs, your API key, your consent record, and your
+  AI spending total, and resets security settings.
 - **Export** your journal, either as an encrypted backup file (AES-256-GCM, protected by a
   passphrase you choose) or as plain Markdown.
 - **Import** an encrypted backup to restore.

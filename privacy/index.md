@@ -72,6 +72,10 @@ master switch — *"Allow any journal data to leave this device"* — which is a
 
 Nothing is transmitted until you turn that master switch on *and* enable the specific feature.
 
+The first-run setup offers the same choice. It shows the master switch's disclosure text word for
+word, behind a checkbox that starts unticked, and both features start off there too. Skipping it,
+or finishing it with both features off, turns nothing on.
+
 **Recipient:** [OpenRouter](https://openrouter.ai), which routes the request to an AI model
 provider (by default `google/gemini-2.5-flash-lite`). You choose the model in Settings.
 

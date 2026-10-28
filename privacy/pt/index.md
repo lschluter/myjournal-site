@@ -74,6 +74,11 @@ dispositivo"* — que também vem desativado.
 
 Nada é transmitido até você ligar esse interruptor principal *e* habilitar o recurso específico.
 
+A configuração inicial do app oferece a mesma escolha. Ela mostra o texto de divulgação do
+interruptor principal palavra por palavra, atrás de uma caixa de seleção que começa desmarcada, e
+os dois recursos também começam desligados ali. Pular essa etapa, ou concluí-la com os dois
+recursos desligados, não ativa nada.
+
 **Destinatário:** [OpenRouter](https://openrouter.ai), que encaminha a requisição a um provedor de
 modelo de IA (por padrão `google/gemini-2.5-flash-lite`). Você escolhe o modelo nas Configurações.
 

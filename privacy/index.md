@@ -77,7 +77,7 @@ word, behind a checkbox that starts unticked, and both features start off there 
 or finishing it with both features off, turns nothing on.
 
 **Recipient:** [OpenRouter](https://openrouter.ai), which routes the request to an AI model
-provider (by default `google/gemini-2.5-flash-lite`). You choose the model in Settings.
+provider (by default `google/gemini-3.1-flash-lite`). You choose the model in Settings.
 
 **What is sent:**
 

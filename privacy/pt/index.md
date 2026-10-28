@@ -80,7 +80,7 @@ os dois recursos também começam desligados ali. Pular essa etapa, ou concluí-
 recursos desligados, não ativa nada.
 
 **Destinatário:** [OpenRouter](https://openrouter.ai), que encaminha a requisição a um provedor de
-modelo de IA (por padrão `google/gemini-2.5-flash-lite`). Você escolhe o modelo nas Configurações.
+modelo de IA (por padrão `google/gemini-3.1-flash-lite`). Você escolhe o modelo nas Configurações.
 
 **O que é enviado:**
 
